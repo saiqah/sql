@@ -1,0 +1,36 @@
+CREATE TABLE cookies (id INTEGER PRIMARY KEY, cookie TEXT, cost INTEGER, aisle INTEGER, dairy_free TEXT, gluten_free TEXT, numberofcookies INTEGER);
+
+INSERT INTO cookies VALUES (1, "chocolate chip", 4.00, 1, "no", "no", 10);
+INSERT INTO cookies VALUES (2, "oatmeal", 3.00, 1, "no", "no", 8);
+INSERT INTO cookies VALUES (3, "snickerdoodle", 2.50, 2, "no", "no", 12);
+INSERT INTO cookies VALUES (4, "sugar", 3.00, 2, "no", "no", 10);
+INSERT INTO cookies VALUES (5, "peanut butter", 3.50, 3, "no", "no", 12);
+INSERT INTO cookies VALUES (6, "biscotti", 5.25, 3, "no", "no", 8);
+INSERT INTO cookies VALUES (7, "shortbread", 5.00, 3, "no", "no", 8);
+INSERT INTO cookies VALUES (8, "gingersnap", 2.50, 1, "no", "no", 12);
+INSERT INTO cookies VALUES (9, "GF gingersnap", 3.50, 1, "no", "yes", 10);
+INSERT INTO cookies VALUES (10, "vegan chocolate chip", 4.50, 1, "yes", "no", 8);
+INSERT INTO cookies VALUES (11, "GF peanut butter", 4.00, 3, "no", "yes", 10);
+INSERT INTO cookies VALUES (12, "GF oatmeal raisin", 4.50, 3, "no", "yes", 8);
+INSERT INTO cookies VALUES (13, "vegan oreos", 3.75, 2, "yes", "yes", 12);
+INSERT INTO cookies VALUES (14, "buckeyes", 3.00, 3, "no", "yes", 8);
+INSERT INTO cookies VALUES (15, "coconut macaron", 5.00, 2, "no", "yes", 8);
+
+
+
+SELECT * FROM cookies;
+SELECT * FROM cookies ORDER BY numberofcookies;
+SELECT * FROM cookies WHERE gluten_free = 'yes' ORDER BY aisle;
+
+SELECT cookie, SUM(cost) FROM cookies group by aisle;
+SELECT SUM (numberofcookies) FROM cookies;
+SELECT * FROM cookies WHERE dairy_free = 'yes' ORDER by cost;
+select aisle, sum(numberofcookies) from cookies group by aisle;
+
+select * from cookies order by cost;
+Select * from cookies where cost > 3.75 order by cost;
+
+select * from cookies where dairy_free = 'yes' AND gluten_free = 'no' order by cost;
+select * from cookies where dairy_free = 'yes' AND gluten_free = 'yes';
+
+select * from cookies where cookie = 'biscotti'

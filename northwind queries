@@ -1,0 +1,10 @@
+Select CategoryName, Description from Categories order by CategoryName;
+Select ContactName, ContactTitle, Phone from Customers order by Phone;
+Select FirstName as FirstName, LastName as Lastname, HireDate from Employees order by HireDate DESC;
+Select top 10 OrderID, OrderDate, ShippedDate, CustomerID, Freight from Orders order by Freight DESC;
+Select LOWER(CustomerID) as ID from Customers;
+Select CompanyName, Fax, Phone, Country, HomePage from Suppliers order by Country Desc, CompanyName ASC;
+Select CompanyName, ContactName from Customers where City = 'Buenos Aires';
+Select ProductName, UnitPrice, QuantityPerUnit from Products where UnitsInStock = 0;
+Select ContactName, Address, City from Customers where Country NOT IN ('Germany', 'Mexico', 'Spain');
+Select OrderDate, ShippedDate, CustomerID, Freight from Orders where OrderDate = '1996-07-08';

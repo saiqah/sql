@@ -1,0 +1,13 @@
+select * from winstons_donut_logs;
+
+
+select ROUND(avg(donuts_eaten)) as avg_donuts from winstons_donut_logs;
+select max(donuts_eaten) as most_donuts from winstons_donut_logs;
+select min(donuts_eaten) as least_donuts from winstons_donut_logs;
+select avg(years_old) as average_age from winstons_donut_logs;
+
+select count(distinct reason) from winstons_donut_logs;
+
+select years_old, sum(donuts_eaten) as total from winstons_donut_logs group by years_old having total > 2000;
+
+select years_old, sum(donuts_eaten) as total from winstons_donut_logs group by years_old having total < 100;

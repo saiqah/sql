@@ -1,13 +1,58 @@
-select * from winstons_donut_logs;
+select sum(domestic) from topmovies;
+select year, count(*) from topmovies group by year;
 
 
-select ROUND(avg(donuts_eaten)) as avg_donuts from winstons_donut_logs;
-select max(donuts_eaten) as most_donuts from winstons_donut_logs;
-select min(donuts_eaten) as least_donuts from winstons_donut_logs;
-select avg(years_old) as average_age from winstons_donut_logs;
+select title, sum(domestic+ overseas) as worldwide from topmovies group by title having worldwide> 1000;
 
-select count(distinct reason) from winstons_donut_logs;
+select title, sum(domestic+ overseas) as worldwide from topmovies group by title having worldwide< 700;
 
-select years_old, sum(donuts_eaten) as total from winstons_donut_logs group by years_old having total > 2000;
+select count(*)as number, studio from topmovies group by studio;
+select count(*)as number, studio from topmovies group by studio having number >= 15;
 
-select years_old, sum(donuts_eaten) as total from winstons_donut_logs group by years_old having total < 100;
+select title, max(worldwide) from topmovies;
+select title, min(worldwide) from topmovies;
+select ROUND(avg(worldwide)) as average_worldwide from topmovies;
+
+select title, worldwide,
+CASE
+when worldwide< 863 then "below average"
+when worldwide = 863 then "average"
+else "above average"
+end as 'average'
+from topmovies;
+
+select COUNT(*),
+CASE
+when worldwide< 863 then "below average"
+when worldwide = 863 then "average"
+else "above average"
+end as 'average'
+from topmovies
+group by average;
+
+select title, max(year) from topmovies;
+select title, min(year) from topmovies;
+
+select title, year,
+CASE
+when year between 1970 and 1980 then "70s movie"
+when year between 1980 and 1990 then "80s movie"
+when year between 1990 and 2000 then "90s movie"
+ELSE "2000s"
+end as era
+from topmovies
+order by era;
+
+select title, year,
+CASE
+when year > 2000 then "00s movie"
+when year >= 1990 then "90s movie"
+when year >= 1980 then "80s movie"
+ELSE "70s movie"
+end as era
+from topmovies
+order by era;
+
+select title, studio from topmovies where studio in ('Fox', 'Sony', 'WB') order by studio;
+
+select count(*) from topmovies where studio in ('Fox', 'Sony', 'WB');

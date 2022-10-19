@@ -8,3 +8,19 @@ Select CompanyName, ContactName from Customers where City = 'Buenos Aires';
 Select ProductName, UnitPrice, QuantityPerUnit from Products where UnitsInStock = 0;
 Select ContactName, Address, City from Customers where Country NOT IN ('Germany', 'Mexico', 'Spain');
 Select OrderDate, ShippedDate, CustomerID, Freight from Orders where OrderDate = '1996-07-08';
+
+
+select * from Customers;
+select* from Orders order by CustomerID;
+select Orders.OrderID, Customers.CompanyName, Customers.ContactName
+from Orders
+inner join Customers on Orders.CustomerID= Customers.CustomerID order by OrderID;
+
+Select Orders.OrderID, Orders.OrderDate, Customers.CompanyName, Customers.Country
+From Orders
+inner join Customers on Customers.CustomerID=Orders.CustomerID;
+
+Select Orders.OrderID, Orders.OrderDate, Customers.CompanyName, Customers.Country
+From Orders
+inner join Customers on Customers.CustomerID=Orders.CustomerID
+where Country IN ('Germany', 'Poland', 'USA') order by Country;
